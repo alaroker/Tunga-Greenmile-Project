@@ -24,10 +24,10 @@
               <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
                     {% if current_user.is_supplier %}
-        <li><a href="{{ url_for('home.admin_dashboard') }}">Dashboard</a></li>
-        <li><a href="#">Departments</a></li>
-        <li><a href="#">Roles</a></li>
-        <li><a href="#">Employees</a></li>
+        <li><a href="{{ url_for('home.supplier_dashboard') }}">Dashboard</a></li>
+        <li><a href="#">Add Package</a></li>
+        <li><a href="#">View Packages</a></li>
+        
       {% else %}
                     <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
                     {% endif %}
