@@ -48,14 +48,14 @@ def add_package():
         package = Package(name=form.name.data, date_created = form.date_created.data, date_to_deliver = form.date_to_deliver.data,
         addressed_to = form.addressed_to.data, package_type = form.package_type.data, hub = form.hub.data,
                                 description=form.description.data,)
-        try:
+        # try:
             # add department to the database
-            db.session.add(package)
-            db.session.commit()
-            flash('You have successfully added a new package.')
-        except:
+        db.session.add(package)
+        db.session.commit()
+        flash('You have successfully added a new package.')
+        # except:
             # in case department name already exists
-            flash('Error: package name already exists.')
+            # flash('Error: package name already exists.')
 
         # redirect to departments page
         return redirect(url_for('supplier.list_packages'))
