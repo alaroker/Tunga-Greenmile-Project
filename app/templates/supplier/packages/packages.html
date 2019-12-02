@@ -1,0 +1,79 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "supplierbase.html" %}
+{% block title %}Packages{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+        {{ utils.flashed_messages() }}
+        <br/>
+        <h1 style="text-align:center;">Packages</h1>
+        {% if packages %}
+          <hr class="intro-divider">
+          <div class="center">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th width="15%"> Name </th>
+                  <th width="15%"> Date Created </th>
+                  <th width="15%"> Date To Deliver </th>
+                  <th width="15%"> Addressed To </th>
+                  <th width="15%"> Package Type </th>
+                  <th width="15%"> Hub </th>
+                  <th width="40%"> Description </th>
+                  <th width="15%"> Recipient Count </th>
+                  <th width="15%"> Edit </th>
+                  <th width="15%"> Delete </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for package in packages %}
+                <tr>
+                  <td> {{ package.name }} </td>
+                  <td> {{ package.date_created }} </td>
+                  <td> {{ package.date_to_deliver }} </td>
+                  <td> {{ package.addressed_to }} </td>
+                  <td> {{ package.package_type }} </td>
+                  <td> {{ package.hub }} </td>
+                  <td> {{ package.description }} </td>
+                  <td>
+                    {% if packages.users %}
+                      {{ packages.users.count() }}
+                    {% else %}
+                      0
+                    {% endif %}
+                  </td>
+                  <td>
+                    <a href="{{ url_for('supplier.edit_package', id=package.id) }}">
+                      <i class="fa fa-pencil"></i> Edit 
+                    </a>
+                </td>
+                <td>
+                  <a href="{{ url_for('supplier.delete_package', id=package.id) }}">
+                    <i class="fa fa-trash"></i> Delete 
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div style="text-align: center">
+      {% else %}
+        <div style="text-align: center">
+          <h3> No packages have been added. </h3>
+          <hr class="intro-divider">
+      {% endif %}
+        <a href="{{ url_for('supplier.add_package') }}" class="btn btn-default btn-lg">
+          <i class="fa fa-plus"></i>
+
+          Add Package
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

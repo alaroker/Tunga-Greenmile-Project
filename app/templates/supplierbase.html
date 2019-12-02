@@ -25,8 +25,8 @@
                     {% if current_user.is_authenticated %}
                     {% if current_user.is_supplier %}
         <li><a href="{{ url_for('home.supplier_dashboard') }}">Dashboard</a></li>
-        <li><a href="#">Add Packages</a></li>
-        <li><a href="#">View Packages</a></li>
+        <li><a href="{{ url_for('supplier.list_packages') }}">Packages</a></li>
+        
         
       {% else %}
                     <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
@@ -47,7 +47,7 @@
       {% endblock %}
       <div class="push"></div>
     </div>
-    <footer>
+    <!-- <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -66,6 +66,6 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> -->
     </body>
     </html>

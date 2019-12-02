@@ -60,7 +60,7 @@ def load_user(user_id):
 
 ##########################################################################
 
-class Packages(db.Model):
+class Package(db.Model):
     """
     Create a Package table
     """
@@ -68,9 +68,9 @@ class Packages(db.Model):
     __tablename__ = 'packages'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60), unique=True)
-    date_created = db.Column(db.DateTime(), default=datetime.utcnow)
-    date_to_deliver = db.Column(db.Date(), nullable=False)
+    name = db.Column(db.String(60))
+    date_created = db.Column(db.String(60))
+    date_to_deliver = db.Column(db.String(60))
     addressed_to = db.Column(db.String(200))
     package_type = db.Column(db.String(200))
     hub = db.Column(db.String(200))
