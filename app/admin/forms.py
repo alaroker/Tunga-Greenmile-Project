@@ -3,6 +3,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, DateField, DateTimeField, SelectField
 from wtforms.validators import DataRequired
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
+from ..models import Package
 
 
 class PackageForm(FlaskForm):
@@ -25,3 +27,12 @@ class PackageForm(FlaskForm):
 ##############################################################################
 ##############################################################################
 
+class LoaderAssignForm(FlaskForm):
+    """
+    Form for admin to assign departments and roles to employees
+    """
+    package = QuerySelectField(query_factory=lambda: Package.query.all(),
+                                  get_label="name")
+    # role = QuerySelectField(query_factory=lambda: Role.query.all(),
+    #                         get_label="name")
+    submit = SubmitField('Submit')

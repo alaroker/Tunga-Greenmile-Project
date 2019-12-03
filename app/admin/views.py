@@ -4,9 +4,12 @@ from flask import abort, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
 
 from . import admin
-from . forms import PackageForm
+# from . forms import PackageForm
 from .. import db
-from ..models import Package
+# from ..models import Package
+
+from . forms import PackageForm, LoaderAssignForm
+from ..models import Package, User
 
 
 def check_admin():
@@ -121,4 +124,50 @@ def delete_package(id):
     # redirect to the departments page
     return redirect(url_for('admin.list_packages'))
 
-    return render_template(title="Delete Package")   
+    return render_template(title="Delete Package")  
+
+# Employee Views
+
+@admin.route('/loaders')
+@login_required
+def list_loaders():
+    """
+    List all employees
+    """
+    check_admin()
+
+    loaders = User.query.all()
+    return render_template('admin/loaders/loaders.html',
+                           loaders=loaders, title='Loaders')
+
+
+@admin.route('/loaders/assign/<int:id>', methods=['GET', 'POST'])
+@login_required
+def assign_loaders(id):
+    """
+    Assign a department and a role to an employee
+    """
+    check_admin()
+
+    loader = User.query.get_or_404(id)
+
+    # prevent admin from being assigned a department or role
+    if loader.is_admin:
+        abort(403)
+    elif loader.is_supplier:
+        abort(403)
+
+    form = LoaderAssignForm(obj=loader)
+    if form.validate_on_submit():
+        loader.package = form.package.data 
+        
+        db.session.add(loader)
+        db.session.commit()
+        flash('You have successfully assigned a package.')
+
+        # redirect to the roles page
+        return redirect(url_for('admin.list_loaders'))
+
+    return render_template('admin/loaders/loader.html',
+                           loader=loader, form=form,
+                           title='Assign Loader')

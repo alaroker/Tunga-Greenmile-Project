@@ -1,0 +1,27 @@
+<!-- app/templates/admin/employees/employee.html -->
+
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}Assign Loader{% endblock %}
+{% block body %}
+<div class="content-section">
+ <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <div class="center">
+            <h1> Assign Package </h1>
+            <br/>
+            <p>
+                Select a package to assign to
+                <span style="color: #aec251;">
+                    {{ loader.first_name }} {{ loader.last_name }}
+                </span>
+            </p>
+            <br/>
+            {{ wtf.quick_form(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

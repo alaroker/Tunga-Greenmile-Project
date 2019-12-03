@@ -28,6 +28,7 @@
                     <li><a href="#">View Loaders</a></li>
                     <li><a href="#">View Recipients</a></li>
                     <li><a href="{{ url_for('admin.list_packages') }}">View Packages</a></li>
+                    <li><a href="{{ url_for('admin.list_loaders') }}">Loaders</a></li>
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                     <li><a><i class="fa fa-user"></i>  Hi, {{ current_user.username }}!</a></li>
                   {% else %}
@@ -44,7 +45,7 @@
       {% endblock %}
       <div class="push"></div>
     </div>
-    <footer>
+    <!-- <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -63,6 +64,6 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> -->
     </body>
     </html>
