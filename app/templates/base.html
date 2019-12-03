@@ -24,6 +24,10 @@
               <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
+                    <li><a href="#">View Suppliers</a></li>
+                    <li><a href="#">View Loaders</a></li>
+                    <li><a href="#">View Recipients</a></li>
+                    <li><a href="{{ url_for('admin.list_packages') }}">View Packages</a></li>
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                     <li><a><i class="fa fa-user"></i>  Hi, {{ current_user.username }}!</a></li>
                   {% else %}

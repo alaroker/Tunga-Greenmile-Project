@@ -33,7 +33,7 @@ def list_packages():
                            packages=packages, title="Packages")
 
 
-@supplier.route('/suppliers/add', methods=['GET', 'POST'])
+@supplier.route('/packages/add', methods=['GET', 'POST'])
 @login_required
 def add_package():
     """
@@ -41,7 +41,7 @@ def add_package():
     """
     check_supplier()
 
-    add_supplier = True
+    add_package = True
 
     form = PackageForm()
     if form.validate_on_submit():
