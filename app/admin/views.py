@@ -17,6 +17,7 @@ def check_admin():
     Prevent non-admins from accessing the page
     """
     if not current_user.is_admin:
+
         abort(403)
 
 # Department Views
@@ -126,7 +127,7 @@ def delete_package(id):
 
     return render_template(title="Delete Package")  
 
-# Employee Views
+# Loader Views
 
 @admin.route('/loaders')
 @login_required

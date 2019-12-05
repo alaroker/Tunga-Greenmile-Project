@@ -2,7 +2,7 @@
 
 from flask import render_template
 from flask_login import login_required
-from flask import abort, render_template
+from flask import abort, render_template, request
 from flask_login import current_user, login_required
 
 from . import home
@@ -15,6 +15,11 @@ def homepage():
     """
     return render_template('home/index.html', title="Welcome")
 
+@home.route('/result',methods = ['POST', 'GET'])
+def result():
+    if request.method == 'POST':
+      result = request.form
+      return render_template("index2.html",result = result)
 
 @home.route('/dashboard')
 @login_required
