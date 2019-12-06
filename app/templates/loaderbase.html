@@ -25,11 +25,13 @@
                     {% if current_user.is_authenticated %}
                     {% if current_user.is_loader %}
         <li><a href="{{ url_for('home.loader_dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('loader.list_packages') }}">View Packages</a></li>
+
      
         
       {% else %}
                     <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ url_for('admin.list_loaders') }}">View Packages</a></li>
+                    <li><a href="{{ url_for('loader.list_packages') }}">View Packages</a></li>
                     {% endif %}
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                     <li><a><i class="fa fa-user"></i>  Hi, {{ current_user.username }}!</a></li>

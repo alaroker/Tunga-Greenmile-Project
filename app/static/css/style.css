@@ -69,7 +69,7 @@ p.copyright {
 .intro-header {
     padding-top: 50px;
     padding-bottom: 50px;
-    text-align: center;
+    text-align: right;
     color: #f8f8f8;
     background: url(../img/intro-bg.jpg) no-repeat center center;
     background-size: cover;
@@ -126,6 +126,6 @@ p.copyright {
 }
 
 button {
-  color: #900;
+  color: rgb(0, 0, 0);
   font-weight: bold;
 }
