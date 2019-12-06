@@ -18,23 +18,23 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand topnav" href="{{ url_for('home.homepage') }}">Project Dream Team</a>
+              <!-- <a class="navbar-brand topnav" href="{{ url_for('home.homepage') }}">Project Dream Team</a> -->
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('home.admin_dashboard') }}">DASHBOARD</a></li>
                     <!-- <li><a href="#">View Suppliers</a></li>
                     <li><a href="#">View Loaders</a></li>
                     <li><a href="#">View Recipients</a></li> -->
-                    <li><a href="{{ url_for('admin.list_packages') }}">View Packages</a></li>
-                    <li><a href="{{ url_for('admin.list_loaders') }}">Loaders</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                    <li><a href="{{ url_for('admin.list_packages') }}">VIEW PACKAGES</a></li>
+                    <li><a href="{{ url_for('admin.list_loaders') }}">LOADERS</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">LOGOUT</a></li>
                     <li><a><i class="fa fa-user"></i>  Hi, {{ current_user.username }}!</a></li>
                   {% else %}
-                  <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
+                  <li><a href="{{ url_for('home.homepage') }}">HOME</a></li>
                   <!-- <li><a href="{{ url_for('auth.register') }}">Register</a></li> -->
-                  <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                  <li><a href="{{ url_for('auth.login') }}">LOGIN</a></li>
                   {% endif %}
               </ul>
           </div>
